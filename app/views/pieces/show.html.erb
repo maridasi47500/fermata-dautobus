@@ -3,7 +3,7 @@
 <%= render @piece %>
 <h1>New passage</h1>
 
-<%= render "passages/form1", passage: Passage.new(piece_id:@piece.id, myscore:Piece.new.hey[:"#{@piece.language}"], time_signature: @piece.time_signature, key_signature: @piece.key_signature) %>
+<%= render "passages/form1", passage: Passage.new(piece_id:@piece.id, myscore:Piece.new.hey[:"#{@piece.language}"].to_s+" \\fermata", time_signature: @piece.time_signature, key_signature: @piece.key_signature) %>
 <%= render @piece.passages %>
 
 

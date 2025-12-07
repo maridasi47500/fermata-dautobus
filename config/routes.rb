@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :countries
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
   resources :passages
   resources :pieces
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

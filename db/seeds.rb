@@ -7,6 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+ISO3166::Country.all_translated.each do |country|
+    mycountry=Country.find_or_create_by(name: country)
+end
+
 piece=Piece.create(title: "la floresta", composer: "me", key_signature: "a major", time_signature: "5/4")
 passage=piece.passages.create(title: "hey ther", description: "wow yes hey", time_signature: "5/4", key_signature: "f major", myscore: "    \\new StaffGroup = \"StaffGroup_strings\" <<
       \\new GrandStaff = \"GrandStaff_violins\" <<

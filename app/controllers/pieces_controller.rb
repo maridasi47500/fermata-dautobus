@@ -12,7 +12,7 @@ class PiecesController < ApplicationController
 
   # GET /pieces/new
   def new
-    @piece = Piece.new
+    @piece = Piece.new(key_signature: "d minor", time_signature: "5/4")
   end
 
   # GET /pieces/1/edit

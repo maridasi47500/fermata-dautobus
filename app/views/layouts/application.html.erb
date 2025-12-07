@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Bus Fermata" %></title>
+    <title><%= content_for(:title) || "autobus fermata" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -20,13 +20,57 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<%if user_signed_in?%>
+<link href="/mycss.css" rel="stylesheet" >
+<%end%>
   </head>
 
   <body>
-<%=link_to "all pieces", pieces_path%>
-<%=link_to "all passages", passages_path%>
-<hr style="color: green;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">play music</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Bienvenue <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%=passages_path%>">add passages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%=pieces_path%>">add pieces</a>
+      </li>
+<%if user_signed_in?%>
+      <li class="nav-item">
+        <a class="nav-link" href="<%=edit_user_registration_path%>">edit user info</a>
+
+      </li>
+      <li class="nav-item">
+<%=button_to "Log out", destroy_user_session_path, :method => :delete %>
+
+      </li>
+<%else%>
+<%=button_to "se connecter", new_user_session_path, :method => :get %>
+<%end%>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
     <%= yield %>
-<hr style="color: green;">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+//$(function(){
+//$('.dropdown-toggle').dropdown()
+//});
+</script>
   </body>
+
 </html>
