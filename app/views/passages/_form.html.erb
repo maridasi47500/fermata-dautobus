@@ -1,0 +1,45 @@
+<%= form_with(model: passage) do |form| %>
+  <% if passage.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(passage.errors.count, "error") %> prohibited this passage from being saved:</h2>
+
+      <ul>
+        <% passage.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :piece_id, style: "display: block" %>
+    <%= form.select :piece_id, Piece.all.collect{|h|["#{h.composer} #{h.title}", h.id]} %>
+  </div>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :myscore, style: "display: block" %>
+    <%= form.text_area :myscore, style: "width:100%;height:500px;" %>
+  </div>
+  <div>
+    <%= form.label :time_signature, style: "display: block" %>
+    <%= form.text_field :time_signature %>
+  </div>
+  <div>
+    <%= form.label :key_signature, style: "display: block" %>
+    <%= form.text_field :key_signature %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

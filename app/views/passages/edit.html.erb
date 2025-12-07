@@ -1,0 +1,12 @@
+<% content_for :title, "Editing passage" %>
+
+<h1>Editing passage</h1>
+
+<%= render "form", passage: @passage %>
+
+<br>
+
+<div>
+  <%= link_to "Show this passage", @passage %> |
+  <%= link_to "Back to passages", passages_path %>
+</div>

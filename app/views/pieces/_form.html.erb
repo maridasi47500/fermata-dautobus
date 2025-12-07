@@ -1,0 +1,41 @@
+<%= form_with(model: piece) do |form| %>
+  <% if piece.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(piece.errors.count, "error") %> prohibited this piece from being saved:</h2>
+
+      <ul>
+        <% piece.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :composer, style: "display: block" %>
+    <%= form.text_field :composer %>
+  </div>
+  <div>
+    <%= form.label :time_signature, style: "display: block" %>
+    <%= form.text_field :time_signature %>
+  </div>
+  <div>
+    <%= form.label :key_signature, style: "display: block" %>
+    <%= form.text_field :key_signature %>
+  </div>
+  <div>
+    <%= form.label :language, "langue pour le nom des notes", style: "display: block" %>
+    <%= form.select :language, Piece.new.hey.keys %>
+  </div>
+    
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @piece %>
+<h1>New passage</h1>
+
+<%= render "passages/form1", passage: Passage.new(piece_id:@piece.id, myscore:Piece.new.hey[:"#{@piece.language}"], time_signature: @piece.time_signature, key_signature: @piece.key_signature) %>
+<%= render @piece.passages %>
+
+
+<div>
+  <%= link_to "Edit this piece", edit_piece_path(@piece) %> |
+  <%= link_to "Back to pieces", pieces_path %>
+
+  <%= button_to "Destroy this piece", @piece, method: :delete %>
+</div>

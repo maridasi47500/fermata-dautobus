@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @passage %>
+<iframe style="width:90%;height:200px;" src="/uploads/<%=@passage.title.parameterize%>/hey<%=@passage.title.parameterize%>.html">
+</iframe>
+
+
+<div>
+  <%= link_to "Edit this passage", edit_passage_path(@passage) %> |
+  <%= link_to "Back to passages", passages_path %>
+
+  <%= button_to "Destroy this passage", @passage, method: :delete %>
+</div>

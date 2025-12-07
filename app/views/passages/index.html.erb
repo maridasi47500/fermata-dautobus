@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Passages" %>
+
+<h1>Passages</h1>
+
+<div id="passages">
+  <% @passages.each do |passage| %>
+    <%= render passage %>
+    <p>
+      <%= link_to "Show this passage", passage %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New passage", new_passage_path %>
