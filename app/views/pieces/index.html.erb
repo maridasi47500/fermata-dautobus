@@ -55,6 +55,16 @@ et
 </p>
 
 <%end%>
+<%@tree1.each do |hey|%>
+<p>
+<%=highlight(hey, "tree")%>
+</p>
+<%end%>
+<%@tree2.each do |hey|%>
+<p>
+<%=highlight(hey, "tree")%>
+</p>
+<%end%>
 
 <div id="pieces">
   <% @pieces.each do |piece| %>

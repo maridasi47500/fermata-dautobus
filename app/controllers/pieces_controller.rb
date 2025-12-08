@@ -5,6 +5,27 @@ class PiecesController < ApplicationController
   def index
     @pieces = Piece.all
     @countries=JSON.parse(File.read("flag_colors.json"))
+    if user_signed_in?
+      @page1 = Wikipedia.find( current_user.country.name )
+      @page2 = Wikipedia.find( current_user.foreign_country.name )
+      def hello str, pattern
+          arr = []
+          arrstr = []
+          mystr=str
+          while (str && (m = str.match pattern))      
+              offset = m.offset(0).first 
+              myid= offset + (arr[-1] ? arr[-1] + 1 : 0)
+              arr << myid
+              #arr << offset + (arr[-1] ? arr[-1] + 1 : 0)
+              arrstr << mystr[(myid-100)..(myid+100)]
+              str = str[(offset + 1)..-1]
+          end
+          arrstr
+      end
+      @tree1=hello(@page1.content, /(national tree|species of tree)/)
+      @tree2=hello(@page2.content, /(specie of tree|national tree|species of tree)/)
+
+    end
     p @countries
   end
 
