@@ -7,11 +7,51 @@
 <p style="font-size:30px;">
     <%=  "#{ISO3166::Country.countries.select{|i|i.iso_short_name == Country.find(current_user.country_id).name}[0].emoji_flag}" %>
 <%=current_user.country.name%>
-    <%=  "#{ISO3166::Country.countries.select{|i|i.iso_short_name == Country.find(current_user.foreign_country_id).name}[0].emoji_flag}" %>
+    <%=  "#{ISO3166::Country.countries.select{|i|i.iso_short_name == Country.find(current_user.foreign_country_id).name}[0].try(:emoji_flag)}" %>
 <%=current_user.foreign_country.name%>
 <%=Date.today.year%>
 
 
+</p>
+<div style="font-size:70px;">
+<% country=@countries[current_user.country.name]%>
+<% mycountry=country%>
+<% country.append(*(@countries[current_user.foreign_country.name]))%>
+<%country.shuffle!%>
+<%mycountry.shuffle!%>
+<div style="display:flex;justify-content:space-between;flex_direction:row;flex-wrap:wrap;">
+<%current_user.country.name.upcase.split("").each do |x|%>
+<%k=cycle(country)%>
+<%l=cycle(mycountry)%>
+<span style="color: <%=k%>;background: <%= k=="#FFFFFF" ? (l == "#FFFFFF" ? "#000000" : l) : (k == l ? "#FFFFFF" : l)%>"><%=x%></span>
+<%end%>
+</div>
+<div style="display:flex;justify-content:space-between;flex_direction:row;flex-wrap:wrap;">
+
+<%current_user.foreign_country.name.upcase.split("").each do |x|%>
+<%k=cycle(country)%>
+<%l=cycle(mycountry)%>
+<span style="color: <%=k%>;background: <%= k=="#FFFFFF" ? (l == "#FFFFFF" ? "#000000" : l) : (k == l ? "#FFFFFF" : l)%>"><%=x%></span>
+
+
+<%end%>
+</div>
+<div style="display:flex;justify-content:space-between;flex_direction:row;flex-wrap:wrap;">
+<%Date.today.year.to_s.split("").each do |x|%>
+<span><%=x%>
+</span>
+<%end%>
+</div>
+</div>
+<p>
+<%pays2=current_user.country.name.capitalize%>
+<%pays1=current_user.foreign_country.name.capitalize%>
+
+<span style="color:red;font-size:30px;">O</span>rchestre de 
+<%=pays2.gsub(pays2[0], "<span style=\"color:red;font-size:30px;\">#{pays2[0]}</span>").html_safe%>
+et 
+<span style="color:red;font-size:30px;">O</span>rchestre de
+<%=pays1.gsub(pays1[0], "<span style=\"color:red;font-size:30px;\">#{pays1[0]}</span>").html_safe%>
 </p>
 
 <%end%>

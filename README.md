@@ -3,6 +3,7 @@
 ![alt text](fermata2.png)
 ![alt text](fermata3.png)
 ![alt text](fermata4.png)
+![alt text](fermata5.png)
 
 # fermata-dautobus
 - Bus fermata 

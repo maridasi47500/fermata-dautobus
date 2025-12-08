@@ -4,6 +4,8 @@ class PiecesController < ApplicationController
   # GET /pieces or /pieces.json
   def index
     @pieces = Piece.all
+    @countries=JSON.parse(File.read("flag_colors.json"))
+    p @countries
   end
 
   # GET /pieces/1 or /pieces/1.json
