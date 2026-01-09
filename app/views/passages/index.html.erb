@@ -6,8 +6,10 @@
 
 <div id="passages">
   <% @passages.each do |passage| %>
-    <%= render passage %>
+
     <p>
+    <%= passage.title %> - 
+    <%= passage.description %>
       <%= link_to "Show this passage", passage %>
     </p>
   <% end %>

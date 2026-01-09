@@ -5,6 +5,8 @@ class PiecesController < ApplicationController
   def index
     @pieces = Piece.all
     @countries=JSON.parse(File.read("flag_colors.json"))
+    @tree1=[] 
+    @tree2=[]
     if user_signed_in?
       @page1 = Wikipedia.find( current_user.country.name )
       @page2 = Wikipedia.find( current_user.foreign_country.name )
