@@ -25,7 +25,7 @@ def hey
 p @score
 
 wow="./public/uploads/"
-hi=self.title.parameterize
+hi=self.title.parameterize+self.id.to_s
 p wow+hi
 File.write(wow+"hey"+hi+".html", @score)
 @hey=`(cd #{wow} && lilypond-book hey#{hi}.html -f html --output #{hi})`
