@@ -5,6 +5,7 @@
 ![alt text](fermata4.png)
 ![alt text](fermata5.png)
 ![alt text](fermata6.png)
+![alt text](fermata7.png)
 ![alt text](tree1.png)
 
 # fermata-dautobus
